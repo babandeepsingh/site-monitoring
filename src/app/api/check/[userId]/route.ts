@@ -5,8 +5,8 @@ const pool = new Pool({
     connectionString: process.env.POSTGRES_DB_URL,
 });
 
-export async function GET(req: NextRequest, { params }: { params: { userId: string } }) {
-    const { userId } = await params;
+export async function GET(req: NextRequest, context: any ) {
+    const { userId } = context.params; // Correct: access via context.params;
     const userIdInt = parseInt(userId, 10);
 
     if (isNaN(userIdInt)) {
