@@ -7,7 +7,7 @@ const pool = new Pool({
 
 export async function GET(
   req: NextRequest,
-  context: { params: { userId: string; siteId: string } }
+  context: any // ✅ Let Next.js handle the actual type internally
 ) {
   const { userId, siteId } = context.params; // Correct: access via context.params
   const userIdInt = parseInt(userId, 10);
